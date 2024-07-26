@@ -1,6 +1,6 @@
-from ucty.basic_account import BasicAccount
-from ucty.saving_account import SavingAccount
-from ucty.junior_account import JuniorAccount
+from accounts.basic_account import BasicAccount
+from accounts.saving_account import SavingAccount
+from accounts.junior_account import JuniorAccount
 
 
 def print_line():
@@ -44,6 +44,6 @@ junior_acc.insert_balance(500)
 i = 0
 
 while i <= 4:
-    junior_acc.withdraw_balance(50)
+    junior_acc.withdraw_balance(10)
     i += 1
 print(junior_acc)

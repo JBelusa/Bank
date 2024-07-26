@@ -1,4 +1,4 @@
-from ucty.basic_account import BasicAccount
+from accounts.basic_account import BasicAccount
 
 
 # Creating Saving account that inherits from BasicAccount
@@ -11,7 +11,7 @@ class SavingAccount(BasicAccount):
 
     # Modified BasicAccount insert method
     def insert_balance(self, amount):
-        return super().insert_balance(amount + amount * self.interest / 100)
+        return super().insert_balance(amount*(1 + self.interest / 100))
 
     # Modified BasicAccount withdraw method
     def withdraw_balance(self, amount):

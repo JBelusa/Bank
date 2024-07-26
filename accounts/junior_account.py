@@ -1,4 +1,4 @@
-from ucty.basic_account import BasicAccount
+from accounts.basic_account import BasicAccount
 
 
 # Creating Junior account that inherits from BasicAccount
@@ -14,18 +14,16 @@ class JuniorAccount(BasicAccount):
     # Modified BasicAccount withdraw method
     def withdraw_balance(self, amount):
 
-        if amount <= self.max_withdraw:
-            if (
-                self.withdraw_count < 4
-                and self.withdrawn_amount + amount <= self.max_withdraw
-            ):
-                self.withdraw_count += 1
-                self.withdrawn_amount += amount
-                return super().withdraw_balance(amount)
-            else:
-                print("You've reached maximum withdrawal count (4)")
-        else:
+        if self.withdrawn_amount + amount > self.max_withdraw:
             print("You can't withdraw more than specified maximum amount")
+            return
+        if self.withdraw_count >= 4:
+            print("You've reached maximum withdrawal count (4).")
+            return
+
+        self.withdraw_count += 1
+        self.withdrawn_amount += amount
+        return super().withdraw_balance(amount)
 
     # Modified BasicAccount __str__ method
     def __str__(self):
